@@ -4,6 +4,17 @@
 {{ article.title|striptags|e }} {%if article.subtitle %} - {{ article.subtitle|striptags|e }} {% endif %} · {{ super() }}
 {% endblock title %}
 
+		<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+		    init_mathjax();
+		    backToTop();
+		});
+      
+    	</script>
+		
+		
 {% block head_description %}
 {% if article.summary %}
 {{ article.summary|striptags|e }}
