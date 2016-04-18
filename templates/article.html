@@ -23,17 +23,21 @@
 
 {% block content %}
 
-        <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
         <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
         <script type="text/javascript">
 		$(document).ready(function() {
-		    init_mathjax();
 		    backToTop();
 		});
       
     	</script>
-		
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
