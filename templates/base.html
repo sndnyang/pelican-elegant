@@ -31,21 +31,30 @@
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
         {% endblock meta_tags_in_head %}
+
         <title>{% block title %}{{ SITENAME|striptags|e }}{% endblock title %}</title>
         {% block head_links %}
-        <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-        <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="//cdn.bootcss.com/amazeui/2.5.2/css/amazeui.min.css" rel="stylesheet">
         <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet">
         <link href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+        <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
         {% if 'assets' in PLUGINS %}
-        {% include '_includes/minify_css.html' with context %}
+            {% include '_includes/minify_css.html' with context %}
         {% else %}
-        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/custom.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
         {% endif %}
         {% endblock head_links %}
+
         {% include '_includes/favicon_links.html' %}
         {% block feed_links %}
         {% include '_includes/feeds.html' %}
@@ -54,22 +63,10 @@
 		<link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style1_24.css">
         <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
         
-        <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-74494551-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-
     </head>
     <body>
         <div id="content-sans-footer">
-        <div class="navbar navbar-static-top">
+        <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -77,19 +74,19 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="{{ SITEURL }}/"><span class=site-name>{{ SITENAME }}</span></a>
+                    <a class="brand" href="/"><span class=site-name>{{ SITENAME }}</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
                             <li {% if page_name == 'index' %} class="active"{% endif %}><a href="/">Home</a></li>
                             {% if DISPLAY_PAGES_ON_MENU %}
                             {% for p in pages %}
-                            <li {% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+                            <li {% if p == page %} class="active"{% endif %}><a href="/{{ p.url }}">{{ p.title }}</a></li>
                             {% endfor %}
                             {% endif %}
-                            <li {% if page_name == 'categories' %} class="active"{% endif %}><a href="{{ SITEURL }}/categories.html">Categories</a></li>
-                            <li {% if page_name == 'tags' %} class="active"{% endif %}><a href="{{ SITEURL }}/tags.html">Tags</a></li>
-                            <li {% if page_name == 'archives' %} class="active"{% endif %}><a href="{{ SITEURL }}/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="{{ SITEURL }}/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li {% if page_name == 'categories' %} class="active"{% endif %}><a href="/categories.html">Categories</a></li>
+                            <li {% if page_name == 'tags' %} class="active"{% endif %}><a href="/tags.html">Tags</a></li>
+                            <li {% if page_name == 'archives' %} class="active"{% endif %}><a href="/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action=/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -97,12 +94,10 @@
         </div>
         <div class="container-fluid">
             <div class="row-fluid">
-                <div class="span1"></div>
-                <div class="span10">
+                <div class="span12">
                     {% block content %}
                     {% endblock content %}
                 </div>
-                <div class="span1"></div>
             </div>
         </div>
         <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
@@ -123,7 +118,17 @@
         </script>
         {% endblock script %}
         {% include '_includes/stat_counter.html' %}
+        <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
     </body>
-    <!-- Theme: Elegant built for Pelican
-    License : http://oncrashreboot.com/pelican-elegant -->
 </html>
