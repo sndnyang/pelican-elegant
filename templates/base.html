@@ -78,6 +78,7 @@
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
                             <li {% if page_name == 'index' %} class="active"{% endif %}><a href="/">Home</a></li>
+                            <li ><a href="http://www.zhimind.com">知维图主页</a></li>
                             {% if DISPLAY_PAGES_ON_MENU %}
                             {% for p in pages %}
                             <li {% if p == page %} class="active"{% endif %}><a href="/{{ p.url }}">{{ p.title }}</a></li>
