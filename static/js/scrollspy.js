@@ -89,7 +89,6 @@
     var activeTarget = this.activeTarget
     var i
 
-    console.log(scrollTop + ' ' + maxScroll);
     if (this.scrollHeight != scrollHeight) {
       this.refresh()
     }
