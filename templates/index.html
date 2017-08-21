@@ -56,6 +56,15 @@
             <div class="article-content">
                 {{ LANDING_PAGE_ABOUT.details }}
             </div>
+            <div class="hidden-phone">
+                <h3>微博最新动态</h3>
+                <div>
+                    <wb:follow-button uid="{{WEIBO_ID}}" type="red_3" width="100%" height="24" ></wb:follow-button>
+                </div>
+                <div>
+                    <iframe id="weibo" style="width:100%; height:400px;"   frameborder="0" scrolling="no" src="http://v.t.sina.com.cn/widget/widget_blog.php?uid={{WEIBO_ID}}"></iframe>
+                </div>
+            </div>
         </div>
         {% endif %}
 
