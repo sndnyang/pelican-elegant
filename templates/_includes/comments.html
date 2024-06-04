@@ -1,8 +1,4 @@
 {% macro comments(article) %}
-<!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
     {% if DISQUS_SITENAME and SITEURL and article.status != 'draft' %}
 <section>
 {% if article.comments_intro %}
